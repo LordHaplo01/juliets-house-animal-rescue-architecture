@@ -1,16 +1,29 @@
-Current MVP
+# Current Platform Capabilities
 
-✔ Mobile Intake Assistant
-✔ Knowledge Base Search
-✔ Update Existing Animal
-✔ Create Animal
+The following business capabilities have been architecturally accepted.
 
-Planned
+## Implemented
 
-□ Pawlytics GraphQL
-□ OAuth
-□ Mailchimp
+✔ Mobile Field Observation
+- Create Observation Report
+- Update Observation Report
+- Organizational Knowledge Search
+
+## In Progress
+
+◐ Observation Publishing
+- Google Sheets (temporary implementation)
+- Human review before publication
+
+## Planned
+
+□ Pawlytics Integration Services (GraphQL)
+□ Authentication & Authorization (OAuth)
 □ Volunteer Portal
-□ Admin Portal
+□ Administrative Portal
 □ Foster Management
-□ Reporting
+□ Reporting & Analytics
+
+## Under Discovery
+
+□ Volunteer Task Coordination

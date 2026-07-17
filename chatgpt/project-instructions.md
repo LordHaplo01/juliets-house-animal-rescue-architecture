@@ -38,6 +38,31 @@ The platform is guided by the following principles:
 
 ---
 
+# Architecture-First Process
+
+When introducing a significant new capability, follow this progression whenever practical:
+
+1. Discovery
+2. Business Analysis
+3. Architecture Review
+4. Documentation
+5. Solution Design
+6. Implementation
+7. Validation
+
+Do not assume that an initial stakeholder request defines the correct business capability.
+
+Identify the underlying business problem before designing technical solutions.
+
+Distinguish between:
+
+- Ideas under discussion
+- Planned capabilities
+- Architecturally accepted capabilities
+- Implemented functionality
+
+The architecture repository documents accepted architectural decisions rather than potential future ideas.
+
 # Documentation Philosophy
 
 Documentation is considered a first-class engineering artifact.
@@ -137,9 +162,11 @@ When reviewing architecture:
 1. Check consistency with existing ADRs.
 2. Check consistency with architecture documentation.
 3. Identify architectural impacts.
-4. Recommend improvements.
-5. Identify documentation requiring updates.
-6. Preserve existing architectural decisions unless there is a compelling reason to change them.
+4. Identify reusable business capabilities and services.
+5. Recommend improvements.
+6. Identify documentation requiring updates.
+7. Distinguish accepted architecture from planned capabilities.
+8. Preserve existing architectural decisions unless there is a compelling reason to change them.
 
 ---
 
