@@ -1,142 +1,254 @@
 # Architecture
 
-## Overview
+## Purpose
 
-The Juliet's House Animal Rescue Volunteer Platform follows a layered architecture that separates conversational AI, business workflows, integration services, and external systems.
-
-Each layer has clearly defined responsibilities and communicates only through well-defined interfaces.
+Describe the architectural structure, guiding concepts, and major responsibilities of the Juliet's House Volunteer Platform.
 
 ---
 
-## Layer 1 – Users
+## Audience
 
-Volunteers interact with the platform using conversational interfaces.
+- Enterprise Architects
+- Solution Architects
+- Developers
+- Technical Leadership
+- Future Contributors
+
+---
+
+# Overview
+
+The Juliet's House Volunteer Platform follows a layered architecture that separates user experiences, conversational AI, business services, integration services, and external systems.
+
+Each architectural layer has clearly defined responsibilities and communicates through well-defined interfaces. This separation enables business capabilities to remain reusable, maintainable, and independent of any single user interface or third-party platform.
+
+The platform is designed around the principle that rescue work occurs before administrative work. Information should be captured wherever rescue activities occur, reviewed by a human, and then published to the organization's system of record through reusable business workflows.
+
+---
+
+# Architectural Principles
+
+The platform follows several core architectural principles:
+
+- AI augments people; it does not replace human judgment.
+- Human approval is required before organizational data is published.
+- Business capabilities are implemented as reusable workflows.
+- Business logic is independent of user interfaces.
+- Integrations are isolated behind reusable services.
+- External systems remain the authoritative owners of persistent organizational data.
+- Documentation evolves alongside implementation.
+
+---
+
+# Primary Business Artifact
+
+The platform's primary business artifact is the **Observation Report**.
+
+An Observation Report represents information captured during rescue activities before it becomes an official organizational record.
+
+An Observation Report may contain:
+
+- Reporter
+- Timestamp
+- Location
+- Voice transcript
+- Photographs
+- Observation summary
+- One or more Animal Observations
+
+An Observation Report may ultimately produce one or many official animal records within the organization's system of record.
+
+This separation allows field observations to be captured naturally while administrative processes occur later.
+
+---
+
+# Information Lifecycle
+
+Information moves through the platform using a consistent lifecycle.
+
+```text
+Capture
+    ↓
+Review
+    ↓
+Approve
+    ↓
+Publish
+```
+
+### Capture
+
+Information is collected through conversational experiences such as voice, text, and photographs.
+
+### Review
+
+The AI summarizes captured information for human verification.
+
+### Approve
+
+An authorized user confirms the information before publication.
+
+### Publish
+
+Approved information is published to an external system of record through reusable integration services.
+
+The publishing destination may evolve over time without affecting the user experience or business workflows.
+
+---
+
+# Layered Architecture
+
+## Layer 1 — Experience Layer
+
+Provides user-facing experiences that interact with the platform.
 
 Responsibilities
 
-- Submit information
-- Review summaries
-- Approve changes
+- Capture observations
+- Present organizational knowledge
+- Display summaries
+- Collect approvals
+- Initiate business capabilities
+
+Examples
+
+- AI Assistant
+- Future Volunteer Portal
+- Future Administrative Portal
+- Future Mobile Applications
+- Future Messaging Integrations
 
 ---
 
-## Layer 2 – AI Layer
+## Layer 2 — AI Orchestration Layer
 
-Responsible for understanding intent and orchestrating conversations.
+Responsible for understanding user intent and orchestrating platform capabilities.
 
 Responsibilities
 
 - Determine user intent
-- Collect information
-- Answer questions
-- Present summaries
+- Conduct conversations
+- Extract structured information
+- Summarize observations
 - Invoke business workflows
 
 The AI does not
 
-- Normalize data
-- Validate business rules
-- Authenticate to external systems
-- Persist data
+- Implement business rules
+- Validate organizational policies
+- Authenticate with external systems
+- Persist organizational data
 
 ---
 
-## Layer 3 – Business Workflows
+## Layer 3 — Business Services Layer
 
-Implemented using n8n.
+Implements reusable organizational capabilities.
+
+Business services are independent of the user interface and may be consumed by conversational AI, future web applications, scheduled automations, or additional integrations.
+
+Current business capabilities include:
+
+- Capture Field Observation
+- Review Observation
+- Publish Observation
+- Update Animal
+- Knowledge Search
+
+Future capabilities include:
+
+- Create Official Intake
+- Foster Management
+- Adoption Assistance
+- Volunteer Management
+- Reporting
+- Notifications
 
 Responsibilities
 
 - Validation
 - Normalization
 - Business rules
-- Orchestration
+- Workflow orchestration
+- Human approval
+- Business policy enforcement
 
 ---
 
-## Layer 4 – Integration Services
+## Layer 4 — Integration Services Layer
 
 Provides reusable interfaces to external systems.
 
 Responsibilities
 
 - Authentication
+- API execution
 - GraphQL execution
 - Retry logic
 - Response parsing
+- Error handling
 - Logging
 
----
-
-## Layer 5 – External Systems
-
-External systems own persistence.
-
-Examples
-
-- Pawlytics
-- Mailchimp
-- Google Workspace
-- Future integrations
+Business services communicate with external systems only through this layer.
 
 ---
 
-## Architectural Principles
+## Layer 5 — External Systems Layer
 
-- Human approval before writes.
-- AI orchestrates rather than owns business logic.
-- Business workflows are atomic and reusable.
-- Integrations are isolated behind service workflows.
-- External systems own persistent data.
-
-## Architectural Style
-
-The Juliet's House Animal Rescue Volunteer Platform follows a layered architecture.
-
-Each layer has clearly defined responsibilities and communicates through well-defined interfaces.
-
-### Experience Layer
-
-Provides user-facing interfaces to the platform.
-
-Examples include:
-
-- AI Assistant
-- Future Volunteer Portal
-- Future Administrative Portal
-- Future Telegram Bot
-- Future Mobile Applications
-
-### Business Services Layer
-
-Implements organizational business capabilities.
-
-Examples include:
-
-- Create Intake
-- Update Animal
-- Search Animal
-- Knowledge Search
-- Follow-up Communications
-
-### Integration Services Layer
-
-Provides reusable interfaces to external systems.
-
-Examples include:
-
-- Authentication
-- GraphQL
-- Mailchimp
-- Google Workspace
-- Future APIs
-
-### Data & External Systems Layer
-
-Systems of record owned outside the platform.
+External systems own persistent organizational data.
 
 Examples include:
 
 - Pawlytics
 - Google Workspace
 - Mailchimp
+- Future organizational systems
+
+The Volunteer Platform augments these systems but does not replace them.
+
+---
+
+# Architectural Data Flow
+
+A simplified view of information movement through the platform is shown below.
+
+```text
+Volunteer
+        │
+        ▼
+Experience Layer
+        │
+        ▼
+AI Orchestration
+        │
+        ▼
+Business Services
+        │
+        ▼
+Integration Services
+        │
+        ▼
+External Systems
+```
+
+Each layer communicates only with the layer immediately below it, preserving loose coupling and clear separation of responsibilities.
+
+---
+
+# Architectural Style
+
+The Juliet's House Volunteer Platform follows a layered architecture composed of reusable business capabilities.
+
+The architecture intentionally separates:
+
+- User experiences
+- Conversational orchestration
+- Business capabilities
+- Integration services
+- External systems
+
+This separation allows the platform to evolve by adding new user interfaces, business workflows, or integrations without requiring significant architectural redesign.
+
+Conversational AI is one experience into the platform rather than the platform itself.
+
+Business capabilities remain reusable regardless of whether they are invoked by conversational interfaces, web applications, scheduled automations, or future integrations.

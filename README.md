@@ -1,33 +1,37 @@
-# Juliet's House Animal Rescue Architecture
+# Juliet's House Animal Rescue Volunteer Platform
+*Architecture & Design Repository*
 
 ![Status](https://img.shields.io/badge/status-active-blue)
 ![Architecture](https://img.shields.io/badge/C4-Architecture-green)
 ![Documentation](https://img.shields.io/badge/docs-living-orange)
 
-This repository contains the architecture, design decisions, documentation, and implementation diagrams for the **Juliet's House Volunteer Platform**.
+This repository contains the architecture, design decisions, business workflows, diagrams, and supporting documentation for the **Juliet's House Volunteer Platform**.
 
-The repository follows an architecture-first approach, where documentation evolves alongside implementation and serves as the authoritative reference for future development.
+The repository follows an architecture-first approach, where documentation evolves alongside implementation and serves as the authoritative reference for future platform development.
 
 ---
 
 ## Purpose
 
-The goal of this repository is to:
+The Juliet's House Volunteer Platform is designed to support the organization's rescue operations by enabling volunteers and staff to capture, manage, and act upon organizational information through intuitive digital experiences.
 
-- Document the platform architecture
-- Capture architectural decisions (ADRs)
-- Describe business workflows
-- Model system interactions
-- Provide implementation guidance
-- Enable future contributors to understand and extend the platform
+This repository exists to:
 
-The platform is designed to improve volunteer efficiency while integrating with existing Juliet's House Animal Rescue systems.
+- Define the platform vision
+- Document the system architecture
+- Capture Architecture Decision Records (ADRs)
+- Describe business capabilities and workflows
+- Model system interactions using C4 and supporting diagrams
+- Guide future implementation
+- Preserve architectural consistency as the platform evolves
+
+The platform augments existing organizational processes while integrating with Juliet's House Animal Rescue's existing systems of record.
 
 ---
 
 ## Repository Structure
 
-```
+```text
 docs/
     Vision
     Architecture
@@ -46,36 +50,66 @@ diagrams/
 assets/
     Images
     Branding
-    Supporting media
+    Supporting Media
 ```
+
+---
+
+## Architectural Principles
+
+The platform is guided by several core architectural principles.
+
+- AI augments people; it does not replace human judgment.
+- Human approval is required before organizational data is published.
+- Business capabilities are reusable and loosely coupled.
+- Business logic is independent of user experiences and integrations.
+- External systems remain the authoritative owners of persistent organizational data.
+- Documentation evolves alongside implementation.
+- Architecture prioritizes maintainability over short-term convenience.
+- The platform remains portable and deployment-agnostic.
+
+---
+
+## Documentation Philosophy
+
+Documentation is treated as a first-class engineering artifact.
+
+Architecture documentation is the authoritative source of truth for platform design.
+
+Implementation should follow documented architectural decisions, with documentation evolving as the platform matures.
 
 ---
 
 ## Diagram Types
 
-This repository contains several categories of diagrams:
+The repository contains multiple architectural viewpoints, including:
 
-- C4 Architecture Diagrams
+- C4 System Context Diagrams
+- C4 Container Diagrams
+- C4 Component Diagrams
 - Business Workflow Diagrams
 - Swimlane Diagrams
 - Deployment Diagrams
-- Sequence Diagrams (future)
+- Sequence Diagrams (planned)
 
 ---
 
-## Guiding Principles
+## Current Platform Capabilities
 
-- Architecture-first design
-- Human-centered AI
-- Documentation evolves with implementation
-- Reusable and loosely coupled workflows
-- Business logic separated from integrations
-- Platform portability across hosting environments
+Current architectural focus includes:
+
+- Mobile Field Observation
+- Observation Review
+- Observation Publishing
+- Animal Record Updates
+- Organizational Knowledge Search
+
+Additional business capabilities will be introduced as organizational requirements mature.
 
 ---
 
-## Status
+## Repository Status
 
 This repository documents an actively evolving platform.
 
-Architecture, workflows, and integrations will continue to mature as additional organizational requirements are discovered.
+Architectural decisions, business capabilities, workflows, and integrations will continue to evolve through stakeholder collaboration and iterative platform development.
