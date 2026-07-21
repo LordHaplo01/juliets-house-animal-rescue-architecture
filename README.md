@@ -30,6 +30,49 @@ The platform augments existing organizational processes while integrating with J
 
 ---
 
+## Platform Context
+
+The following C4 System Context diagram provides the highest-level view of the Juliet's House Volunteer Platform and its relationships with users and external systems.
+
+```mermaid
+flowchart LR
+
+%% Actors
+Volunteer["👤 Volunteer"]
+Staff["👥 Staff"]
+Admin["🛠 Platform Administrator"]
+
+%% Platform
+Platform["🏠 Juliet's House Animal Rescue Volunteer Platform"]
+
+%% External Systems
+Pawlytics["🐾 Pawlytics"]
+Google["📄 Google Workspace"]
+Mailchimp["✉️ Mailchimp"]
+
+%% Relationships
+Volunteer -->|Uses| Platform
+Staff -->|Uses| Platform
+Admin -->|Maintains| Platform
+
+Platform -->|Publishes Approved Records| Pawlytics
+Platform -->|Reads / Publishes Information| Google
+Platform -.->|Future Communications| Mailchimp
+
+%% Styling
+classDef actor fill:#d6ecff,stroke:#3b82f6,color:#000,stroke-width:2px;
+classDef platform fill:#dff6dd,stroke:#2e7d32,color:#000,stroke-width:3px;
+classDef external fill:#fff3d6,stroke:#d97706,color:#000,stroke-width:2px;
+
+class Volunteer,Staff,Admin actor;
+class Platform platform;
+class Pawlytics,Google,Mailchimp external;
+```
+
+Implementation details such as workflow engines, AI models, databases, APIs, containers, and hosting infrastructure are intentionally omitted from this view.
+
+---
+
 ## Intended Audience
 
 This repository is intended for:
@@ -103,23 +146,23 @@ Implementation should follow documented architectural decisions, with documentat
 
 Read these documents in order:
 
-1. Vision
-2. Architecture
-3. Roadmap
-4. Glossary
-5. Assumptions
+1. [Vision](docs/vision.md)
+2. [Architecture](docs/architecture.md)
+3. [Roadmap](docs/roadmap.md)
+4. [Glossary](docs/glossary.md)
+5. [Assumptions](docs/assumptions.md)
 
 ### 🏛 Understanding Architecture Decisions
 
-Review the Architecture Decision Records (ADRs).
+Review the [Architecture Decision Records (ADRs)](docs/adr/).
 
 ### 🧩 Understanding Business Capabilities
 
-Review the Capability Documentation.
+Review the [Capability Documentation](docs/capabilities/README.md).
 
 ### 📊 Understanding Platform Behavior
 
-Review the architecture and workflow diagrams.
+Review the [architecture and workflow diagrams](diagrams/).
 
 ### ⚙️ Understanding Platform Operations
 
@@ -131,8 +174,8 @@ Review the operational documentation.
 
 Repository documentation follows the standards defined in:
 
-- Documentation Style Guide
-- Diagram Standards
+- [Documentation Style Guide](docs/documentation-style-guide.md)
+- [Diagram Standards](docs/diagram-standards.md)
 
 These documents establish repository-wide conventions for writing, organization, terminology, and diagrams.
 
