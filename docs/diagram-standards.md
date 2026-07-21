@@ -17,6 +17,14 @@ The goal is to ensure every diagram is consistent, easy to understand, and serve
 
 ---
 
+# Architectural Consistency
+
+- Architecture diagrams should remain consistent with the Architecture document.
+- When architectural layers or terminology change, affected diagrams should be updated alongside the supporting documentation.
+- Diagram terminology should be sourced from the Glossary whenever practical.
+
+---
+
 # C4 Model
 
 The repository follows the C4 Model where appropriate.
@@ -93,7 +101,7 @@ Examples
 
 Purpose
 
-Describe the major business capabilities within each container.
+Describe the major Business Services and Platform Services within a container and their relationships.
 
 Audience
 
@@ -101,10 +109,18 @@ Audience
 
 Examples
 
-- Create Intake
+Business Services
+
+- Capture Field Observation
+- Publish Observation
 - Update Animal
 - Knowledge Search
+
+Platform Services
+
+- Document Service
 - Notification Service
+- Configuration Service
 
 ---
 
@@ -147,6 +163,7 @@ Preferred swimlanes include:
 - Staff
 - Experience Layer
 - Business Services
+- Platform Services
 - Integration Services
 - External Systems
 
@@ -159,8 +176,9 @@ Sequence diagrams describe runtime interactions.
 Examples
 
 - AI → Business Service
-- Business Service → GraphQL
-- GraphQL → Pawlytics
+- Business Service → Platform Service
+- Business Service → Integration Service
+- Integration Service → Pawlytics
 
 ---
 
