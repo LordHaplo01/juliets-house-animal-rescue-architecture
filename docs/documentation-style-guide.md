@@ -69,6 +69,8 @@ Architecture Decision Records
     ↓
 Business Capability Documentation
     ↓
+Platform Service Documentation
+    ↓
 Diagrams
     ↓
 Implementation
@@ -141,11 +143,34 @@ Describe reusable organizational capabilities.
 Examples include:
 
 - Capture Field Observation
-- Knowledge Search
+- Publish Observation
 - Update Animal
-- Document Service
+- Knowledge Search
 
 Capability documents describe business behavior rather than workflow implementation.
+
+---
+
+## Platform Service Documentation
+
+Audience
+
+- Architects
+- Developers
+- Future Maintainers
+
+Purpose
+
+Document reusable technical capabilities shared across multiple Business Services.
+
+Examples include:
+
+- Document Service
+- Notification Service
+- Configuration Service
+- Storage Service
+
+Platform Services implement technical capabilities rather than business rules.
 
 ---
 
