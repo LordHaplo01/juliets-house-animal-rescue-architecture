@@ -69,6 +69,7 @@ The review should determine:
 
 - Whether a new Business Capability is required
 - Whether new or changed Business Services are required
+- Whether a new or shared Platform Service should be introduced
 - Whether new workflows are required
 - Whether an Integration Service is required
 - Whether existing services can be reused
@@ -132,7 +133,8 @@ Contributors should:
 - Preserve separation of concerns.
 - Keep workflows atomic and loosely coupled.
 - Avoid duplicating business logic.
-- Use Business Services as reusable capability boundaries.
+- Use Business Services as reusable business capability boundaries.
+- Implement shared technical functionality within Platform Services.
 - Isolate external-system behavior within Integration Services.
 - Preserve mandatory human-review controls.
 - Implement appropriate logging, monitoring, and error handling.
@@ -245,6 +247,7 @@ The platform is designed around:
 - Architecture-first delivery
 - Human-centered AI
 - Reusable Business Services
+- Reusable Platform Services
 - Atomic workflows
 - Separation of concerns
 - Loose coupling
