@@ -18,7 +18,7 @@ Describe the architectural structure, guiding concepts, and major responsibiliti
 
 # Overview
 
-The Juliet's House Volunteer Platform follows a layered architecture that separates user experiences, conversational AI, business services, integration services, and external systems.
+The Juliet's House Volunteer Platform follows a layered architecture that separates user experiences, conversational AI, business services, platform services, integration services, and external systems.
 
 Each architectural layer has clearly defined responsibilities and communicates through well-defined interfaces. This separation enables business capabilities to remain reusable, maintainable, and independent of any single user interface or third-party platform.
 
@@ -32,11 +32,14 @@ The platform follows several core architectural principles:
 
 - AI augments people; it does not replace human judgment.
 - Human approval is required before organizational data is published.
-- Business capabilities are implemented as reusable workflows.
+- Business capabilities are implemented as reusable Business Services.
+- Reusable technical capabilities are implemented as Platform Services.
 - Business logic is independent of user interfaces.
 - Integrations are isolated behind reusable services.
 - External systems remain the authoritative owners of persistent organizational data.
 - Documentation evolves alongside implementation.
+- The platform remains portable and deployment-agnostic whenever practical.
+- Prefer simplicity over unnecessary complexity.
 
 ---
 
@@ -52,7 +55,7 @@ An Observation Report may contain:
 - Timestamp
 - Location
 - Voice transcript
-- Photographs
+- Documents (photographs, videos, and future supporting files)
 - Observation summary
 - One or more Animal Observations
 
@@ -69,6 +72,8 @@ Information moves through the platform using a consistent lifecycle.
 ```text
 Capture
     ↓
+Validate
+    ↓
 Review
     ↓
 Approve
@@ -78,7 +83,11 @@ Publish
 
 ### Capture
 
-Information is collected through conversational experiences such as voice, text, and photographs.
+Information is collected through conversational experiences such as voice, text, and supporting documents.
+
+### Validate
+
+Business Services validate captured information, normalize data, and prepare it for review.
 
 ### Review
 
@@ -102,7 +111,7 @@ The publishing destination may evolve over time without affecting the user exper
 
 Provides user-facing experiences that interact with the platform.
 
-Responsibilities
+### Responsibilities
 
 - Capture observations
 - Present organizational knowledge
@@ -110,7 +119,7 @@ Responsibilities
 - Collect approvals
 - Initiate business capabilities
 
-Examples
+### Examples
 
 - AI Assistant
 - Future Volunteer Portal
@@ -124,7 +133,7 @@ Examples
 
 Responsible for understanding user intent and orchestrating platform capabilities.
 
-Responsibilities
+### Responsibilities
 
 - Determine user intent
 - Conduct conversations
@@ -132,7 +141,7 @@ Responsibilities
 - Summarize observations
 - Invoke business workflows
 
-The AI does not
+### The AI does not
 
 - Implement business rules
 - Validate organizational policies
@@ -145,9 +154,9 @@ The AI does not
 
 Implements reusable organizational capabilities.
 
-Business services are independent of the user interface and may be consumed by conversational AI, future web applications, scheduled automations, or additional integrations.
+Business Services are independent of the user interface and may be consumed by conversational AI, future web applications, scheduled automations, or additional integrations.
 
-Current business capabilities include:
+### Current Business Capabilities
 
 - Capture Field Observation
 - Review Observation
@@ -155,19 +164,18 @@ Current business capabilities include:
 - Update Animal
 - Knowledge Search
 
-Future capabilities include:
+### Future Business Capabilities
 
 - Create Official Intake
 - Foster Management
 - Adoption Assistance
 - Volunteer Management
 - Reporting
-- Notifications
 
-Responsibilities
+### Responsibilities
 
-- Validation
-- Normalization
+- Business validation
+- Data normalization
 - Business rules
 - Workflow orchestration
 - Human approval
@@ -175,11 +183,39 @@ Responsibilities
 
 ---
 
-## Layer 4 — Integration Services Layer
+## Layer 4 — Platform Services Layer
+
+Provides reusable technical capabilities shared across Business Services.
+
+Platform Services encapsulate technical functionality that is not specific to a single business capability and promote reuse across the platform.
+
+### Current Platform Services
+
+- Configuration Service
+- ID Generation Service
+
+### Planned Platform Services
+
+- Document Service
+- Notification Service
+- Storage Service
+- Audit Service
+
+### Responsibilities
+
+- Shared technical capabilities
+- Document management
+- Identifier generation
+- Configuration management
+- Cross-cutting platform functionality
+
+---
+
+## Layer 5 — Integration Services Layer
 
 Provides reusable interfaces to external systems.
 
-Responsibilities
+### Responsibilities
 
 - Authentication
 - API execution
@@ -189,15 +225,15 @@ Responsibilities
 - Error handling
 - Logging
 
-Business services communicate with external systems only through this layer.
+Business Services communicate with external systems only through this layer.
 
 ---
 
-## Layer 5 — External Systems Layer
+## Layer 6 — External Systems Layer
 
 External systems own persistent organizational data.
 
-Examples include:
+### Examples
 
 - Pawlytics
 - Google Workspace
@@ -225,6 +261,9 @@ AI Orchestration
 Business Services
         │
         ▼
+Platform Services
+        │
+        ▼
 Integration Services
         │
         ▼
@@ -237,17 +276,22 @@ Each layer communicates only with the layer immediately below it, preserving loo
 
 # Architectural Style
 
-The Juliet's House Volunteer Platform follows a layered architecture composed of reusable business capabilities.
+The Juliet's House Volunteer Platform follows a layered architecture composed of reusable Business Services supported by reusable Platform Services.
 
 The architecture intentionally separates:
 
 - User experiences
 - Conversational orchestration
 - Business capabilities
+- Platform capabilities
 - Integration services
 - External systems
 
-This separation allows the platform to evolve by adding new user interfaces, business workflows, or integrations without requiring significant architectural redesign.
+Business Services implement organizational capabilities such as capturing observations, updating animal records, and publishing information.
+
+Platform Services provide reusable technical capabilities that support multiple Business Services. Examples include document management, configuration, identifier generation, notifications, and other shared infrastructure concerns.
+
+This separation allows the platform to evolve by adding new user interfaces, business workflows, platform capabilities, or integrations without requiring significant architectural redesign.
 
 Conversational AI is one experience into the platform rather than the platform itself.
 

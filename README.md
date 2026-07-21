@@ -2,6 +2,7 @@
 *Architecture & Design Repository*
 
 ![Status](https://img.shields.io/badge/status-active-blue)
+![Platform](https://img.shields.io/badge/platform-MVP-yellow)
 ![Architecture](https://img.shields.io/badge/C4-Architecture-green)
 ![Documentation](https://img.shields.io/badge/docs-living-orange)
 
@@ -29,28 +30,44 @@ The platform augments existing organizational processes while integrating with J
 
 ---
 
+## Intended Audience
+
+This repository is intended for:
+
+- Juliet's House Leadership
+- Enterprise Architects
+- Solution Architects
+- Software Engineers
+- Future Contributors
+- Platform Administrators
+
+Documentation is written to be technically accurate while remaining understandable to non-technical stakeholders whenever practical.
+
+---
+
 ## Repository Structure
 
 ```text
 docs/
-    Vision
-    Architecture
-    Roadmap
-    Assumptions
-    Glossary
-    ADRs
+    Core architecture documentation
+
+docs/adr/
+    Architecture Decision Records
+
+docs/capabilities/
+    Business capability documentation
 
 diagrams/
-    Context
-    Containers
-    Components
-    Workflows
-    Deployment
+    C4, workflow, sequence, deployment, and data model diagrams
+
+backlog/
+    Discovery, proposals, and future enhancements
+
+chatgpt/
+    AI project configuration and supporting context
 
 assets/
-    Images
-    Branding
-    Supporting Media
+    Images, branding, and supporting media
 ```
 
 ---
@@ -80,6 +97,47 @@ Implementation should follow documented architectural decisions, with documentat
 
 ---
 
+## Where to Start
+
+### 👋 New to the Platform
+
+Read these documents in order:
+
+1. Vision
+2. Architecture
+3. Roadmap
+4. Glossary
+5. Assumptions
+
+### 🏛 Understanding Architecture Decisions
+
+Review the Architecture Decision Records (ADRs).
+
+### 🧩 Understanding Business Capabilities
+
+Review the Capability Documentation.
+
+### 📊 Understanding Platform Behavior
+
+Review the architecture and workflow diagrams.
+
+### ⚙️ Understanding Platform Operations
+
+Review the operational documentation.
+
+---
+
+## Documentation Standards
+
+Repository documentation follows the standards defined in:
+
+- Documentation Style Guide
+- Diagram Standards
+
+These documents establish repository-wide conventions for writing, organization, terminology, and diagrams.
+
+---
+
 ## Diagram Types
 
 The repository contains multiple architectural viewpoints, including:
@@ -90,7 +148,9 @@ The repository contains multiple architectural viewpoints, including:
 - Business Workflow Diagrams
 - Swimlane Diagrams
 - Deployment Diagrams
-- Sequence Diagrams (planned)
+- Sequence Diagrams
+- Data Model Diagrams
+- Capability Maps
 
 ---
 
@@ -104,7 +164,19 @@ Current architectural focus includes:
 - Animal Record Updates
 - Organizational Knowledge Search
 
-Additional business capabilities will be introduced as organizational requirements mature.
+Additional business capabilities and platform services will be introduced as organizational requirements mature.
+
+---
+
+## Contributing
+
+Before contributing architecture documentation, please review:
+
+- Documentation Style Guide
+- Diagram Standards
+- Existing Architecture Decision Records
+
+Documentation should evolve alongside implementation and remain consistent with established architectural principles.
 
 ---
 
@@ -113,3 +185,17 @@ Additional business capabilities will be introduced as organizational requiremen
 This repository documents an actively evolving platform.
 
 Architectural decisions, business capabilities, workflows, and integrations will continue to evolve through stakeholder collaboration and iterative platform development.
+
+---
+
+## Repository Goal
+
+The long-term goal of this repository is to provide a comprehensive architectural knowledge base describing:
+
+- Why the platform exists.
+- How it is organized.
+- What capabilities it provides.
+- Why architectural decisions were made.
+- How future contributors should extend the platform.
+
+The repository should remain understandable without requiring access to implementation source code.

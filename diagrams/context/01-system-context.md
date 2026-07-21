@@ -34,8 +34,8 @@ Volunteer -->|Uses| Platform
 Staff -->|Uses| Platform
 Admin -->|Maintains| Platform
 
-Platform -->|Reads / Writes Animal Records| Pawlytics
-Platform -->|Reads Documentation| Google
+Platform -->|Publishes Approved Records| Pawlytics
+Platform -->|Reads / Publishes Information| Google
 Platform -.->|Future Communications| Mailchimp
 
 %% Styling
@@ -52,19 +52,6 @@ class Pawlytics,Google,Mailchimp external;
 
 This diagram represents the highest-level view of the platform.
 
-Implementation details such as n8n, Ollama, Qdrant, Docker, GraphQL, hosting infrastructure, and workflow orchestration are intentionally omitted. Those belong in lower-level architecture diagrams.
-
-The platform is shown as a single system because this diagram focuses on business interactions rather than technical implementation.
-
-## References
-
-- Vision
-- Architecture
-- ADR-001
-## Notes
-
-This diagram represents the highest-level view of the platform.
-
 Implementation details such as n8n, Ollama, Qdrant, Docker, GraphQL, and hosting infrastructure are intentionally omitted. Those details belong in lower-level C4 diagrams.
 
 The Platform is shown as a single system because this diagram focuses on business interactions rather than technical implementation.
@@ -74,5 +61,6 @@ The Platform is shown as a single system because this diagram focuses on busines
 - Vision
 - Architecture
 - ADR-001 Platform First
-- ADR-002 Business Workflows
-- ADR-003 Integration Layer
+- ADR-002 Reusable Business Services
+- ADR-003 Dedicated GraphQL Integration Layer
+- ADR-004 Observation-First Business Model
