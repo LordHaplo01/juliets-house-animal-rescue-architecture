@@ -44,7 +44,10 @@ Business Services are responsible for:
 - Executing business rules
 - Validating business data
 - Coordinating business processes
-- Invoking required integration services
+- Orchestrating Platform Services where required
+- Invoking required Integration Services
+
+Business Services encapsulate organizational business logic. Shared technical capabilities are implemented by Platform Services and external communication is handled through Integration Services.
 
 Business logic shall not be embedded within AI prompts or user interface implementations.
 
@@ -79,5 +82,7 @@ Examples of Business Services include:
 - Publish Observation
 - Update Animal
 - Knowledge Search
+
+Business Services may orchestrate Platform Services while remaining independent of their technical implementation.
 
 The current implementation uses n8n workflows to realize these services, but the architectural decision remains valid regardless of the underlying workflow technology.
