@@ -11,29 +11,37 @@ The following documents should be uploaded into the ChatGPT Project whenever the
 - docs/glossary.md
 - docs/assumptions.md
 - docs/diagram-standards.md
+- docs/documentation-style-guide.md
 
 ## Governance
 
-- CONTRIBUTING.md
+- docs/CONTRIBUTIONS.md
+
+## Business Capability Documentation
+
+Upload the entire `docs/capabilities/` folder.
 
 ## Architecture Decisions
 
-Upload the entire `docs/adr` folder.
+Upload the entire `docs/adr/` folder.
 
 ## Backlog
 
-Upload the entire `backlog` folder.
+Upload the entire `backlog/` folder.
 
 Backlog items provide architectural context for capabilities currently progressing through the architecture-first process but are **not** considered accepted architecture.
 
 ## Diagrams
 
-Upload rendered diagrams as they mature if visual reference becomes useful.
+Upload the Markdown/Mermaid diagram documents in `diagrams/observation/`.
+
+README.md already contains the sole authoritative System Context diagram. Do not add or recreate a separate System Context source.
+
+Rendered copies are not required unless a future visual need specifically requires them.
 
 ## Future
 
 As the repository evolves, additional documentation may become useful, including:
 
 - Solution Designs
-- Business Capability documentation
 - Implementation documentation

@@ -28,13 +28,42 @@ The platform is guided by the following principles:
 - AI augments people; it does not replace human judgment.
 - Human review is required before external data modifications.
 - Business logic is separated from infrastructure and integrations.
-- Business capabilities should be reusable services.
+- Business capabilities are implemented as reusable Business Services.
+- Shared technical capabilities are implemented as reusable Platform Services.
+- External-system communication is encapsulated by Integration Services.
 - Workflows should remain atomic and loosely coupled.
 - Documentation evolves alongside implementation.
 - Architecture should prioritize maintainability over short-term convenience.
 - The platform should remain portable and deployment-agnostic.
 - Avoid vendor lock-in whenever practical.
 - Prefer simplicity over unnecessary complexity.
+
+---
+
+# Architectural Service Model
+
+Business Services are the architectural business capability boundary. Workflows may implement Business Services, but workflows are not themselves the architectural capability model.
+
+Platform Services provide reusable technical capabilities shared across Business Services.
+
+Integration Services encapsulate communication with External Systems.
+
+---
+
+# Layered Architecture
+
+The accepted architecture consists of:
+
+1. Experience Layer
+2. AI Orchestration Layer
+3. Business Services Layer
+4. Platform Services Layer
+5. Integration Services Layer
+6. External Systems Layer
+
+AI Orchestration is optional and is used by AI-enabled experiences where appropriate. Conversational AI is one User Experience rather than the platform itself.
+
+User Experiences may invoke Business Services. Business Services may orchestrate Platform Services and invoke Integration Services where required. Platform Services are reusable supporting capabilities rather than mandatory routing hops. Integration Services communicate with External Systems, which remain outside the Volunteer Platform boundary.
 
 ---
 
@@ -79,7 +108,11 @@ Examples include:
 - Roadmap
 - Assumptions
 - Glossary
+- Business Capability Documentation
+- Documentation Style Guide
+- Diagram Standards
 - Diagrams
+- Solution Design
 
 Never assume documentation updates are optional.
 
@@ -104,7 +137,7 @@ Do not silently make architectural decisions.
 Prefer:
 
 - Enterprise standards
-- Reusable services
+- Reusable Business Services and Platform Services
 - Atomic workflows
 - Separation of concerns
 - Loose coupling
@@ -147,11 +180,17 @@ When creating diagrams:
 - Reserve implementation details for lower-level diagrams.
 - Prefer portable Mermaid syntax over renderer-specific features.
 - Every diagram should include:
+  - Title
+  - Status
   - Purpose
   - Audience
   - Diagram
   - Notes
   - References
+
+README.md contains the sole authoritative C4 System Context diagram. Do not create or maintain a duplicate standalone System Context diagram.
+
+Other diagram artifacts are Markdown documents containing Mermaid diagrams. Follow the repository Diagram Standards for detailed conventions.
 
 ---
 
@@ -159,14 +198,17 @@ When creating diagrams:
 
 When reviewing architecture:
 
-1. Check consistency with existing ADRs.
-2. Check consistency with architecture documentation.
-3. Identify architectural impacts.
-4. Identify reusable business capabilities and services.
-5. Recommend improvements.
-6. Identify documentation requiring updates.
-7. Distinguish accepted architecture from planned capabilities.
-8. Preserve existing architectural decisions unless there is a compelling reason to change them.
+1. Check consistency with existing ADRs and architecture documentation.
+2. Identify Business Capability impacts.
+3. Identify Business Service impacts.
+4. Identify Platform Service impacts.
+5. Identify Integration Service impacts.
+6. Identify User Experience impacts.
+7. Identify External System impacts.
+8. Identify ADR and documentation impacts.
+9. Recommend improvements.
+10. Distinguish accepted architecture from planned capabilities.
+11. Preserve existing architectural decisions unless there is a compelling reason to change them.
 
 ---
 
@@ -176,7 +218,47 @@ The Juliet's House Animal Rescue Volunteer Platform is a digital platform that e
 
 Conversational AI is one interface into the platform rather than the platform itself.
 
-Business capabilities are implemented as reusable workflows and integration services that may be consumed by conversational interfaces, web applications, scheduled automations, or future integrations.
+Business capabilities are implemented as reusable Business Services that may be consumed by conversational interfaces, web applications, scheduled automations, or future integrations.
+
+---
+
+# Observation Semantics
+
+Capture Field Observation, Review Observation Report, and Publish Observation Report comprise the implemented Observation interaction.
+
+Review Observation Report represents reporter review and confirmation. Publish Observation Report publishes confirmed information as organizational working information.
+
+Observation publication does not create an Intake or an official Pawlytics animal record. A later organizational review determines whether a published Observation Report should proceed toward Intake, and Pawlytics publication belongs to that downstream process.
+
+Do not describe the future Observation-to-Intake process in implementation detail until its architecture has been accepted.
+
+---
+
+# Implementation-State Guardrails
+
+Source current implementation state from `chatgpt/context.md` and the repository documentation rather than assuming it.
+
+The current known state is:
+
+Implemented and tested:
+
+- Capture Field Observation
+- Review Observation Report
+- Publish Observation Report
+
+Implemented:
+
+- Knowledge Search
+
+Architecturally accepted but not implemented and the next target:
+
+- Document Service
+
+Not implemented:
+
+- Update Animal
+
+Avoid duplicating additional volatile implementation details in these durable instructions.
 
 ---
 

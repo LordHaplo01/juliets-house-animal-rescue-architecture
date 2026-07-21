@@ -1,29 +1,53 @@
-# Current Platform Capabilities
+# Current Platform Context
 
-The following business capabilities have been architecturally accepted.
+This document provides a concise snapshot of the current implementation and accepted architectural state.
+
+## Implemented and Tested
+
+- Capture Field Observation
+- Review Observation Report
+- Publish Observation Report
 
 ## Implemented
 
-✔ Mobile Field Observation
-- Create Observation Report
-- Update Observation Report
-- Organizational Knowledge Search
+- Knowledge Search
 
-## In Progress
+## Architecturally Accepted / Next Implementation Target
 
-◐ Observation Publishing
-- Google Sheets (temporary implementation)
-- Human review before publication
+- Document Service
 
-## Planned
+Document Service is a reusable Platform Service. It is architecturally accepted, not implemented, and the next implementation target.
 
-□ Pawlytics Integration Services (GraphQL)
-□ Authentication & Authorization (OAuth)
-□ Volunteer Portal
-□ Administrative Portal
-□ Foster Management
-□ Reporting & Analytics
+## Not Implemented
 
-## Under Discovery
+- Update Animal
+- Observation-to-Intake bridge
+- Pawlytics integration
 
-□ Volunteer Task Coordination
+## Observation Semantics
+
+The implemented Observation interaction is:
+
+```text
+Capture Field Observation
+    ↓
+Review Observation Report
+    ↓
+Publish Observation Report
+    ↓
+Published Observation Report
+```
+
+Review Observation Report represents the reporter reviewing and confirming the information captured during the interaction.
+
+Publish Observation Report publishes the confirmed Observation Report as organizational working information. Publication does not create an Intake or an official animal record in Pawlytics.
+
+A separate future organizational review process will determine whether a published Observation Report becomes an Intake. That Observation-to-Intake bridge is not implemented.
+
+## Current Persistence
+
+Excel currently provides intermediate persistence and visualization for published Observation Reports.
+
+Excel is an implementation mechanism, not the architectural system of record. The architecture must allow Excel to be removed or replaced without changing the Observation business capability model.
+
+Pawlytics remains the authoritative system of record for official animal records and is a future downstream integration target.
