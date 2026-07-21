@@ -20,25 +20,26 @@ Illustrate the lifecycle states of an Observation Report from creation through i
 ```mermaid
 stateDiagram-v2
 
-    state "Pending Review" as PendingReview
+    state "Pending Confirmation" as PendingConfirmation
 
     [*] --> Captured
-    Captured --> PendingReview
+    Captured --> PendingConfirmation
 
-    PendingReview --> Approved
-    PendingReview --> Rejected
+    PendingConfirmation --> Captured: Corrections Required
+    PendingConfirmation --> Confirmed
 
-    Approved --> Published
+    Confirmed --> Published
 
     Published --> [*]
-    Rejected --> [*]
 ```
 
 ## Notes
 
 This diagram represents the business lifecycle of an Observation Report.
 
-State transitions are driven by business decisions.
+State transitions are driven by reporter review and confirmation.
+
+Published Observation Reports remain organizational working information. The later Intake review lifecycle is outside this diagram.
 
 Implementation details are documented elsewhere.
 
@@ -47,4 +48,4 @@ Implementation details are documented elsewhere.
 - [Capture Field Observation](../../docs/capabilities/capture-field-observation.md)
 - [Review Observation Report](../../docs/capabilities/review-observation-report.md)
 - [Publish Observation Report](../../docs/capabilities/publish-observation-report.md)
-- [ADR-004 — Observation-First Business Model](../../docs/adr/004-observation-first-business-model)
+- [ADR-004 — Observation-First Business Model](../../docs/adr/004-observation-first-business-model.md)

@@ -21,19 +21,29 @@ Roadmap phases represent the progressive maturity of business capabilities rathe
 
 Establish the core platform capabilities required to support mobile rescue operations and future platform expansion.
 
-### Business Capabilities
+### Implemented Business Capabilities
 
-- Mobile Field Observation
-- Observation Review
-- Observation Publishing
-- Animal Record Updates
-- Organizational Knowledge Search
+- Capture Field Observation
+- Review Observation Report
+- Publish Observation Report
+- Knowledge Search
 
-### Platform Capabilities
+### Not Implemented Business Capabilities
 
-- Human Approval Workflow
-- Google Workspace Publishing
-- Pawlytics Integration
+- Human Approval Workflow — downstream responsibility not implemented
+- Update Animal
+
+### Platform Services
+
+- Document Service — architecturally accepted and next implementation target
+
+### Integration Services
+
+- Excel Publication — implemented
+- Pawlytics Integration — not implemented
+
+### Architecture / Governance
+
 - Architecture Documentation
 
 ---
@@ -42,7 +52,7 @@ Establish the core platform capabilities required to support mobile rescue opera
 
 Expand support for day-to-day rescue operations beyond field observations.
 
-### Business Capabilities
+### Business Capabilities / Business Services
 
 - Official Animal Intake
 - Foster Management
@@ -50,9 +60,14 @@ Expand support for day-to-day rescue operations beyond field observations.
 - Volunteer Coordination
 - Organizational Notifications
 
-### Platform Capabilities
+Organizational notification behavior may require a Business Service supported by a reusable Notification Service. Detailed requirements remain to be defined.
+
+### Integration Services
 
 - Mailchimp Integration
+
+### Platform Evolution
+
 - Additional Workflow Automation
 - Enhanced Knowledge Management
 
@@ -62,18 +77,21 @@ Expand support for day-to-day rescue operations beyond field observations.
 
 Provide administrative visibility, reporting, and platform management capabilities.
 
-### Business Capabilities
+### Business Capabilities / Business Services
 
 - Reporting
 - Analytics
 - Administrative Workflows
+- Knowledge Base Management
 
-### Platform Capabilities
+### User Experiences
 
 - Administrative Portal
-- Knowledge Base Management
-- Platform Monitoring
 - Operational Dashboards
+
+### Platform Services
+
+- Platform Monitoring
 
 ---
 
@@ -107,7 +125,8 @@ The Volunteer Platform is intended to evolve incrementally through reusable busi
 Each phase builds upon previously established architectural foundations while preserving:
 
 - Human-centered workflows
-- Reusable business services
+- Reusable Business Services
+- Reusable Platform Services
 - Separation of concerns
 - Integration independence
 - Long-term maintainability

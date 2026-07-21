@@ -35,7 +35,7 @@ These assumptions represent the team's current understanding of the organization
 - Field observations should be captured as close to the rescue activity as possible.
 - Administrative processing may occur after rescue activities have been completed.
 - Human review will remain part of the organization's operational process before official organizational records are created or modified.
-- Observation information may require editing or clarification before publication to the system of record.
+- Observation information may require editing or clarification before it is confirmed and published as organizational working information.
 
 ---
 
@@ -44,7 +44,8 @@ These assumptions represent the team's current understanding of the organization
 - Pawlytics will remain the authoritative source for official animal records.
 - Pawlytics provides a supported GraphQL API suitable for future integration.
 - OAuth credentials will be available for production integration.
-- Google Workspace is available for organizational collaboration and may serve as an interim publishing destination during early platform development.
+- Google Workspace is available for organizational collaboration.
+- Excel currently provides intermediate persistence and visualization for published Observation Reports. It is not the authoritative animal system of record and is expected to be removable without changing the business capability model.
 - Mailchimp is used by the organization, but its current implementation and future integration requirements are not yet fully understood.
 - The organizational knowledge base will continue to expand as additional documentation becomes available.
 - Modern mobile devices used by volunteers will provide native support for voice input and photo capture.
@@ -75,8 +76,8 @@ These assumptions represent the team's current understanding of the organization
 
 The following assumptions should be validated during future stakeholder discussions:
 
-- Observation review and approval responsibilities.
-- Long-term workflow for converting observations into official animal records.
+- Downstream organizational review and Intake approval responsibilities.
+- Long-term process for reviewing published Observation Reports and converting approved information into official animal records.
 - Photo retention and storage requirements.
 - Observation editing requirements after initial submission.
 - Additional metadata required during field observations.

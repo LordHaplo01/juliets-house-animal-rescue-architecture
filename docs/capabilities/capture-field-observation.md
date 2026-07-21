@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Describe the business capability for capturing observations made by volunteers and staff during rescue activities before those observations become official organizational records.
+Describe the business capability for structuring observations made by volunteers and staff during rescue activities as a proposed Observation Report.
 
-This capability produces Observation Reports for human review.
+This capability produces a proposed Observation Report for review and confirmation by the reporter.
 
 ---
 
@@ -19,7 +19,7 @@ This capability produces Observation Reports for human review.
 
 # Business Goal
 
-Enable Juliet's House to capture accurate field observations at the point of discovery, reduce information loss, standardize intake information, preserve supporting evidence, and require human review before publication.
+Enable Juliet's House to capture accurate field observations at the point of discovery, reduce information loss, standardize observation information, preserve supporting evidence, and require reporter confirmation before publication.
 
 ---
 
@@ -29,9 +29,9 @@ Enable Juliet's House to capture accurate field observations at the point of dis
 
 Captures information observed during rescue activities.
 
-## Staff Reviewer
+## Staff
 
-Reviews captured information before it may proceed to publication.
+Captures information when acting as the reporter.
 
 Future user experiences may support additional organizational roles without changing this capability's business behavior.
 
@@ -61,8 +61,8 @@ This capability begins when:
 3. Supporting documents are associated with the observation.
 4. An Observation Report is created.
 5. The Observation Report is validated.
-6. The Observation Report enters human review.
-7. Approved observations may later be published through a separate capability.
+6. The proposed Observation Report is made available to the reporter for review and confirmation.
+7. Confirmed Observation Reports may later be published through a separate capability.
 
 ---
 
@@ -70,8 +70,8 @@ This capability begins when:
 
 - One Observation Report may contain multiple Animal Observations.
 - The Observation Report is the primary business artifact produced by this capability.
-- Official organizational records are not created or modified directly during capture.
-- Human review and approval are required before publication.
+- Official organizational records are not created or modified during capture.
+- Reporter review and confirmation are required before Observation publication.
 - Supporting documents remain associated with the Observation Report.
 
 ---
@@ -97,18 +97,21 @@ The following Business Service participates directly in this capability:
 
 Additional Business Services participate in later lifecycle stages:
 
-- Review Observation
-- Publish Observation
+- Review Observation Report
+- Publish Observation Report
 
 ---
 
 # Platform Services
 
-The following Platform Services support this capability:
+The following established Platform Services support this capability:
 
-- Document Service
 - Configuration Service
 - ID Generation Service
+
+The following Platform Service is architecturally accepted but not implemented:
+
+- Document Service
 
 ---
 
@@ -116,7 +119,7 @@ The following Platform Services support this capability:
 
 No Integration Services are required during initial capture.
 
-Communication with external systems occurs through later publication capabilities.
+Communication with the current working-information destination occurs through Publish Observation Report.
 
 ---
 
@@ -155,9 +158,9 @@ Business-level error conditions include:
 
 # Human Review Requirements
 
-Every Observation Report requires human review and approval before publication to an external system of record.
+Every proposed Observation Report requires review and confirmation by the reporter before it is published as organizational working information.
 
-Capture does not authorize the creation or modification of official organizational records.
+This reporter confirmation is distinct from the later organizational review that may determine whether a published Observation Report should proceed toward Intake.
 
 ---
 
@@ -165,7 +168,7 @@ Capture does not authorize the creation or modification of official organization
 
 - Access to Observation Reports should be limited to appropriate volunteers and staff.
 - Supporting documents should be protected as part of the Observation Report.
-- Creation, review, approval, and publication activities should remain auditable.
+- Creation, review, confirmation, and publication activities should remain auditable.
 
 ---
 

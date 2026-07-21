@@ -30,11 +30,13 @@ The platform will adopt an Observation-First Business Model.
 
 The primary business artifact within the platform is the **Observation Report**.
 
-An Observation Report represents information captured during rescue activities before it becomes an official organizational record.
+An Observation Report represents organizational working information captured during rescue activities.
 
 Each Observation Report may contain one or more Animal Observations.
 
-Official animal records are created or updated only after human review and approval through the publication process.
+Reporter-confirmed Observation Reports are published as organizational working information.
+
+Official animal records are created or updated only through a later Intake process after human organizational review and approval.
 
 This business model separates field information capture from administrative record management while allowing both processes to evolve independently.
 
@@ -55,7 +57,7 @@ This business model separates field information capture from administrative reco
 ### Tradeoffs
 
 - Introduces an additional business artifact
-- Requires a publication step before external systems are updated
+- Requires a separate downstream process before official animal records are created or updated
 - Requires lifecycle management for Observation Reports
 
 ---
@@ -64,8 +66,8 @@ This business model separates field information capture from administrative reco
 
 This architectural decision establishes the Observation Report as the primary business artifact throughout the platform.
 
-Future Business Services, workflows, integrations, and user experiences should operate on Observation Reports rather than assuming immediate creation or modification of official organizational records.
+Future Business Services, workflows, integrations, and user experiences should operate on published Observation Reports as organizational working information rather than assuming immediate creation or modification of official organizational records.
 
 External systems, including Pawlytics, remain the authoritative owners of official animal records.
 
-Observation Reports exist within the Volunteer Platform and represent the organization's working information until publication occurs.
+Published Observation Reports remain organizational working information until a later human organizational review determines whether they should proceed toward Intake.

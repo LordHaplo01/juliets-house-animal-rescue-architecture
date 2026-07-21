@@ -55,8 +55,8 @@ Volunteer -->|Uses| Platform
 Staff -->|Uses| Platform
 Admin -->|Maintains| Platform
 
-Platform -->|Publishes Approved Records| Pawlytics
-Platform -->|Reads / Publishes Information| Google
+Platform -.->|Future Official Record Integration| Pawlytics
+Platform -->|Reads Organizational Information| Google
 Platform -.->|Future Communications| Mailchimp
 
 %% Styling
@@ -109,8 +109,6 @@ backlog/
 chatgpt/
     AI project configuration and supporting context
 
-assets/
-    Images, branding, and supporting media
 ```
 
 ---
@@ -120,7 +118,7 @@ assets/
 The platform is guided by several core architectural principles.
 
 - AI augments people; it does not replace human judgment.
-- Human approval is required before organizational data is published.
+- Human approval is required before official organizational records are created or modified.
 - Business capabilities are reusable and loosely coupled.
 - Business logic is independent of user experiences and integrations.
 - External systems remain the authoritative owners of persistent organizational data.
@@ -166,7 +164,7 @@ Review the [architecture and workflow diagrams](diagrams/).
 
 ### ⚙️ Understanding Platform Operations
 
-Review the operational documentation.
+Operational documentation will be added as implementation responsibilities mature.
 
 ---
 
@@ -183,7 +181,7 @@ These documents establish repository-wide conventions for writing, organization,
 
 ## Diagram Types
 
-The repository contains multiple architectural viewpoints, including:
+The repository supports multiple architectural viewpoints, including:
 
 - C4 System Context Diagrams
 - C4 Container Diagrams
@@ -199,13 +197,23 @@ The repository contains multiple architectural viewpoints, including:
 
 ## Current Platform Capabilities
 
-Current architectural focus includes:
+Implemented and tested:
 
-- Mobile Field Observation
-- Observation Review
-- Observation Publishing
-- Animal Record Updates
-- Organizational Knowledge Search
+- Capture Field Observation
+- Review Observation Report
+- Publish Observation Report
+
+Implemented:
+
+- Knowledge Search
+
+Architecturally accepted and next implementation target:
+
+- Document Service
+
+Not implemented:
+
+- Update Animal
 
 Additional business capabilities and platform services will be introduced as organizational requirements mature.
 

@@ -75,13 +75,14 @@ Business logic shall not be embedded within AI prompts or user interface impleme
 
 ## Notes
 
-Examples of Business Services include:
+Implemented Business Services include:
 
 - Capture Field Observation
-- Review Observation
-- Publish Observation
-- Update Animal
+- Review Observation Report
+- Publish Observation Report
 - Knowledge Search
+
+Update Animal is not implemented.
 
 Business Services may orchestrate Platform Services while remaining independent of their technical implementation.
 

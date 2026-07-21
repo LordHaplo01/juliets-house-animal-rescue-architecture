@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Describe the organizational responsibility for publishing approved Observation Reports to one or more official systems of record.
+Describe the organizational responsibility for publishing reporter-confirmed Observation Reports as organizational working information.
 
-Publication represents the transition from a reviewed and approved Observation Report to one or more official organizational records.
+Publication represents the transition from a proposed Observation Report to published working information available for downstream organizational review.
 
-This capability begins after an Observation Report has been approved through Review Observation Report.
+This capability begins after an Observation Report has been confirmed through Review Observation Report.
 
 ---
 
@@ -21,19 +21,19 @@ This capability begins after an Observation Report has been approved through Rev
 
 # Business Goal
 
-Ensure approved information becomes part of the organization's official records, preserve consistency between Observation Reports and systems of record, prevent unauthorized publication, and maintain traceability between each Observation Report and the resulting organizational records.
+Ensure reporter-confirmed information becomes available as organizational working information, prevent unauthorized publication, and maintain traceability for each published Observation Report.
 
 ---
 
 # Actors
 
-## Staff Reviewer
+## Reporter
 
-Provides the human approval required before publication may proceed.
+Provides the confirmation required before Observation publication may proceed.
 
 ## Publishing Process
 
-Carries out the organizational responsibility for creating or updating official organizational records from approved information.
+Carries out the organizational responsibility for making the confirmed Observation Report available as working information.
 
 The Publishing Process represents an organizational responsibility rather than a user.
 
@@ -42,7 +42,7 @@ The Publishing Process represents an organizational responsibility rather than a
 # Preconditions
 
 - An Observation Report exists.
-- The Observation Report has been approved.
+- The Observation Report has been confirmed by the reporter.
 - Publication has not already completed.
 - Information required for publication is available.
 
@@ -50,7 +50,7 @@ The Publishing Process represents an organizational responsibility rather than a
 
 # Trigger
 
-This capability begins when an approved Observation Report is ready for publication.
+This capability begins when a reporter-confirmed Observation Report is ready for publication.
 
 ---
 
@@ -58,7 +58,7 @@ This capability begins when an approved Observation Report is ready for publicat
 
 1. Publication is initiated.
 2. Publication prerequisites are verified.
-3. Official organizational records are created or updated.
+3. The confirmed Observation Report is published as organizational working information.
 4. The publication outcome is recorded.
 5. The Observation Report reflects its publication status.
 
@@ -66,11 +66,11 @@ This capability begins when an approved Observation Report is ready for publicat
 
 # Business Rules
 
-- Only approved Observation Reports may be published.
-- Publication creates or updates official organizational records.
+- Only reporter-confirmed Observation Reports may be published.
+- Publication creates organizational working information, not an Intake or an official animal record.
 - Publication outcomes are auditable.
 - Supporting documents remain associated with the originating Observation Report.
-- Publication should avoid creating duplicate organizational records.
+- Publication should avoid duplicating the published Observation Report.
 
 ---
 
@@ -93,35 +93,39 @@ The following Business Service participates directly in this capability:
 
 - Publish Observation Report
 
-Review Observation Report is the upstream capability that provides the required human approval.
+Review Observation Report is the upstream capability that provides the required reporter confirmation.
 
 ---
 
 # Platform Services
 
-The following Platform Services support this capability:
+The following established Platform Services support this capability:
 
-- Document Service
 - Configuration Service
 - ID Generation Service
+
+The following Platform Service is architecturally accepted but not implemented:
+
+- Document Service
 
 ---
 
 # Integration Services
 
-This capability communicates with one or more systems of record through Integration Services.
+This capability communicates with the current publication destination through an Integration Service.
 
-Integration Services encapsulate external communication while the Business Service remains responsible for publication rules and outcomes.
+The current implementation publishes to Excel for intermediate persistence and visualization. Excel is not the authoritative animal system of record, and the Business Service remains independent of that implementation mechanism.
 
 ---
 
 # User Experiences
 
-Publication is generally initiated as part of organizational operations rather than through direct volunteer interaction.
+Publication occurs within the same user interaction in which the reporter captures, reviews, and confirms the Observation Report.
 
 User Experiences may include:
 
-- Administrative review interface
+- Conversational experience
+- Administrative interface
 - Future operational dashboards
 
 User Experiences may initiate or present publication activity but do not implement publication rules.
@@ -132,7 +136,7 @@ User Experiences may initiate or present publication activity but do not impleme
 
 Business validation confirms that:
 
-- The Observation Report has been approved.
+- The Observation Report has been confirmed by the reporter.
 - Information required for publication is present.
 - The Observation Report is eligible for publication.
 - Publication has not already completed.
@@ -143,18 +147,18 @@ Business validation confirms that:
 
 Business-level error conditions include:
 
-- The Observation Report has not been approved.
+- The Observation Report has not been confirmed by the reporter.
 - Required information is missing.
 - Publication cannot be completed.
-- An official organizational record cannot be created or updated.
+- The organizational working information cannot be published.
 
 ---
 
 # Human Review Requirements
 
-This capability relies on prior human approval through Review Observation Report and does not replace that review.
+This capability relies on prior reporter confirmation through Review Observation Report and does not replace that review.
 
-Publication cannot proceed without the required approval.
+Publication does not replace the later human organizational review that may determine whether the Observation Report should proceed toward Intake.
 
 ---
 
@@ -162,8 +166,8 @@ Publication cannot proceed without the required approval.
 
 - Publication should be limited to authorized organizational operations.
 - Publication activity and outcomes should remain auditable.
-- The integrity of official organizational records should be protected throughout publication.
-- Traceability between an Observation Report and resulting organizational records should be preserved.
+- The integrity of published organizational working information should be protected.
+- Traceability to the originating Observation Report should be preserved.
 
 ---
 

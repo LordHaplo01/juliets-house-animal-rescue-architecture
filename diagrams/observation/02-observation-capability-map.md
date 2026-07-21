@@ -39,11 +39,11 @@ The three capabilities are independently documented.
 
 Workflow, state, and runtime interactions are documented separately.
 
-Observation Reports remain working information until approved information is published to an external system of record.
+Published Observation Reports remain organizational working information until a later human organizational review determines whether they should proceed toward Intake.
 
 ## References
 
 - [Capture Field Observation](../../docs/capabilities/capture-field-observation.md)
 - [Review Observation Report](../../docs/capabilities/review-observation-report.md)
 - [Publish Observation Report](../../docs/capabilities/publish-observation-report.md)
-- [ADR-004 — Observation-First Business Model](../../docs/adr/004-observation-first-business-model)
+- [ADR-004 — Observation-First Business Model](../../docs/adr/004-observation-first-business-model.md)

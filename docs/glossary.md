@@ -44,7 +44,7 @@ Technical administrator responsible for configuring, maintaining, monitoring, an
 
 The primary business artifact captured by the Volunteer Platform.
 
-An Observation Report represents information collected during rescue activities before it becomes an official organizational record.
+An Observation Report represents organizational working information collected during rescue activities. It may later inform the creation or modification of an official organizational record through a separate Intake process.
 
 An Observation Report may contain one or many Animal Observations.
 
@@ -63,21 +63,23 @@ Examples include:
 - Color and markings
 - Notes
 
-Animal Observations may later become official animal records.
+Animal Observations may later inform official animal records through a separate Intake process.
 
 ---
 
 ## Human Review
 
-A mandatory review and approval step before organizational information is published to an external system of record.
+Human verification appropriate to the business decision being made.
+
+The reporter reviews and confirms a proposed Observation Report before it is published as organizational working information. A later human organizational review determines whether a published Observation Report should proceed toward Intake and an official organizational record.
 
 ---
 
 ## Publish
 
-The process of transferring approved organizational information from the Volunteer Platform to an external system of record.
+The process of making a reporter-confirmed Observation Report available as organizational working information for downstream organizational review.
 
-Publishing occurs only after human approval.
+Publishing an Observation Report does not create an Intake or an official animal record.
 
 ---
 
@@ -85,9 +87,11 @@ Publishing occurs only after human approval.
 
 ## Volunteer Platform
 
-The collection of user experiences, Business Services, Platform Services, workflows, and Integration Services that support Juliet's House Animal Rescue operations.
+The collection of user experiences, optional AI Orchestration, Business Services, Platform Services, workflows, and Integration Services that support Juliet's House Animal Rescue operations.
 
 Conversational AI is one experience within the platform rather than the platform itself.
+
+External Systems interact with the Volunteer Platform but remain outside its boundary.
 
 ---
 
@@ -106,9 +110,8 @@ A reusable organizational capability implementing a discrete business function.
 Examples include:
 
 - Capture Field Observation
-- Review Observation
-- Publish Observation
-- Update Animal
+- Review Observation Report
+- Publish Observation Report
 - Knowledge Search
 
 Business Services are independent of user interfaces.
@@ -136,6 +139,8 @@ Platform Services do not implement business rules.
 
 A Platform Service responsible for managing supporting documents associated with business artifacts.
 
+The Document Service is architecturally accepted but not implemented. It is the next implementation target.
+
 Responsibilities include:
 
 - Document validation
@@ -158,19 +163,6 @@ The current implementation uses n8n workflows, although the architectural concep
 ## Tool
 
 A Business Service exposed to the AI Assistant for invocation during a conversation.
-
----
-
-## Platform Services
-
-Reusable technical capabilities shared across Business Services.
-
-Examples include:
-
-- Document Service
-- Configuration Service
-- ID Generation Service
-- Notification Service
 
 ---
 
@@ -245,6 +237,6 @@ Used throughout this repository to communicate the platform architecture.
 
 ## Layered Architecture
 
-An architectural style that separates user experiences, orchestration, Business Services, Platform Services, Integration Services, and external systems into six well-defined layers with clearly defined responsibilities.
+An architectural style that separates the Experience Layer, optional AI Orchestration Layer, Business Services Layer, Platform Services Layer, Integration Services Layer, and External Systems Layer into six well-defined layers with clearly defined responsibilities.
 
 Business capabilities communicate through these layers while remaining loosely coupled and independently maintainable.

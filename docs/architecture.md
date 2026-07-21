@@ -22,7 +22,7 @@ The Juliet's House Volunteer Platform follows a layered architecture that separa
 
 Each architectural layer has clearly defined responsibilities and communicates through well-defined interfaces. This separation enables business capabilities to remain reusable, maintainable, and independent of any single user interface or third-party platform.
 
-The platform is designed around the principle that rescue work occurs before administrative work. Information should be captured wherever rescue activities occur, reviewed by a human, and then published to the organization's system of record through reusable business workflows.
+The platform is designed around the principle that rescue work occurs before administrative work. Information should be captured wherever rescue activities occur, confirmed by the reporter, and published as organizational working information through reusable Business Services. A later human organizational review determines whether that information should become an official organizational record.
 
 ---
 
@@ -31,7 +31,7 @@ The platform is designed around the principle that rescue work occurs before adm
 The platform follows several core architectural principles:
 
 - AI augments people; it does not replace human judgment.
-- Human approval is required before organizational data is published.
+- Human approval is required before official organizational records are created or modified.
 - Business capabilities are implemented as reusable Business Services.
 - Reusable technical capabilities are implemented as Platform Services.
 - Business logic is independent of user interfaces.
@@ -47,7 +47,7 @@ The platform follows several core architectural principles:
 
 The platform's primary business artifact is the **Observation Report**.
 
-An Observation Report represents information captured during rescue activities before it becomes an official organizational record.
+An Observation Report represents organizational working information captured during rescue activities. It may later inform an official organizational record through a separate Intake process.
 
 An Observation Report may contain:
 
@@ -59,7 +59,7 @@ An Observation Report may contain:
 - Observation summary
 - One or more Animal Observations
 
-An Observation Report may ultimately produce one or many official animal records within the organization's system of record.
+An Observation Report may ultimately inform one or many official animal records through a separate Intake process.
 
 This separation allows field observations to be captured naturally while administrative processes occur later.
 
@@ -76,7 +76,7 @@ Validate
     ↓
 Review
     ↓
-Approve
+Confirm
     ↓
 Publish
 ```
@@ -91,17 +91,17 @@ Business Services validate captured information, normalize data, and prepare it 
 
 ### Review
 
-The AI summarizes captured information for human verification.
+The proposed Observation Report is presented to the reporter for verification.
 
-### Approve
+### Confirm
 
-An authorized user confirms the information before publication.
+The reporter confirms the information before publication as organizational working information.
 
 ### Publish
 
-Approved information is published to an external system of record through reusable integration services.
+Confirmed information is published as an Observation Report that remains organizational working information and is available for downstream organizational review.
 
-The publishing destination may evolve over time without affecting the user experience or business workflows.
+Observation publication does not create an Intake or an official animal record. The publishing destination may evolve over time without affecting the user experience or Business Services.
 
 ---
 
@@ -116,7 +116,7 @@ Provides user-facing experiences that interact with the platform.
 - Capture observations
 - Present organizational knowledge
 - Display summaries
-- Collect approvals
+- Collect confirmations and approvals
 - Initiate business capabilities
 
 ### Examples
@@ -132,6 +132,8 @@ Provides user-facing experiences that interact with the platform.
 ## Layer 2 — AI Orchestration Layer
 
 Responsible for understanding user intent and orchestrating platform capabilities.
+
+This layer is used by AI-enabled experiences and is not required for User Experiences that do not use AI.
 
 ### Responsibilities
 
@@ -156,13 +158,19 @@ Implements reusable organizational capabilities.
 
 Business Services are independent of the user interface and may be consumed by conversational AI, future web applications, scheduled automations, or additional integrations.
 
-### Current Business Capabilities
+### Implemented and Tested Business Capabilities
 
 - Capture Field Observation
-- Review Observation
-- Publish Observation
-- Update Animal
+- Review Observation Report
+- Publish Observation Report
+
+### Implemented Business Capabilities
+
 - Knowledge Search
+
+### Not Implemented
+
+- Update Animal
 
 ### Future Business Capabilities
 
@@ -189,16 +197,18 @@ Provides reusable technical capabilities shared across Business Services.
 
 Platform Services encapsulate technical functionality that is not specific to a single business capability and promote reuse across the platform.
 
-### Current Platform Services
+### Established Platform Services
 
 - Configuration Service
 - ID Generation Service
 
-### Planned Platform Services
+### Architecturally Accepted / Not Implemented
 
 - Document Service
+
+### Planned Platform Services
+
 - Notification Service
-- Storage Service
 - Audit Service
 
 ### Responsibilities
@@ -233,6 +243,8 @@ Business Services communicate with external systems only through this layer.
 
 External systems own persistent organizational data.
 
+External Systems are represented as the sixth architectural layer but remain outside the Volunteer Platform boundary.
+
 ### Examples
 
 - Pawlytics
@@ -246,31 +258,23 @@ The Volunteer Platform augments these systems but does not replace them.
 
 # Architectural Data Flow
 
-A simplified view of information movement through the platform is shown below.
+A simplified view of permitted dependencies within the platform is shown below.
 
 ```text
-Volunteer
-        │
-        ▼
 Experience Layer
-        │
-        ▼
-AI Orchestration
-        │
-        ▼
-Business Services
-        │
-        ▼
-Platform Services
-        │
-        ▼
-Integration Services
-        │
-        ▼
-External Systems
+    ├── AI Orchestration Layer, when the experience is AI-enabled
+    │       └── Business Services Layer
+    └── Business Services Layer, when AI orchestration is not required
+
+Business Services Layer
+    ├── Platform Services Layer, as required
+    └── Integration Services Layer, as required
+
+Integration Services Layer
+    └── External Systems Layer
 ```
 
-Each layer communicates only with the layer immediately below it, preserving loose coupling and clear separation of responsibilities.
+User Experiences may invoke Business Services directly or use AI Orchestration when appropriate. Business Services may orchestrate Platform Services and invoke Integration Services as required. Integration Services encapsulate communication with External Systems.
 
 ---
 
@@ -287,7 +291,7 @@ The architecture intentionally separates:
 - Integration services
 - External systems
 
-Business Services implement organizational capabilities such as capturing observations, updating animal records, and publishing information.
+Business Services implement organizational capabilities such as capturing and publishing observations, with additional capabilities such as animal record updates introduced when implemented.
 
 Platform Services provide reusable technical capabilities that support multiple Business Services. Examples include document management, configuration, identifier generation, notifications, and other shared infrastructure concerns.
 

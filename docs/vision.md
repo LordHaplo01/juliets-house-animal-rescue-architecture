@@ -12,7 +12,7 @@ The Juliet's House Volunteer Platform enables volunteers and staff to capture, m
 
 Rather than replacing volunteers, the platform augments their work by enabling information to be captured wherever rescue activities occur, preserving critical details that might otherwise be lost, and transforming those observations into structured organizational knowledge through human review and reusable business workflows.
 
-The platform is designed around the principle that field work should never be interrupted by administrative tasks. Volunteers should be able to document what they observe naturally—through conversation, voice, photographs, and other intuitive interactions—while the platform handles organization, structure, and integration with existing organizational systems.
+The platform is designed around the principle that field work should never be interrupted by administrative tasks. Volunteers should be able to document what they observe naturally—through conversation, voice, supporting documents, and other intuitive interactions—while the platform handles organization, structure, and integration with existing organizational systems.
 
 The long-term vision is to create an extensible platform that supports the entire animal rescue lifecycle, from the first field observation through intake, medical care, fostering, adoption, volunteer coordination, and future organizational capabilities, while integrating seamlessly with Juliet's House Animal Rescue's existing systems.
 
@@ -27,7 +27,7 @@ The platform aims to:
 - Improve the consistency, completeness, and quality of organizational information.
 - Preserve information at the point of discovery so it is not lost or forgotten.
 - Provide immediate access to organizational knowledge and guidance.
-- Support human review before organizational data is published to systems of record.
+- Support human review before official organizational records are created or modified.
 - Integrate seamlessly with existing organizational systems.
 - Support future automation and new capabilities without requiring significant architectural redesign.
 
@@ -36,9 +36,9 @@ The platform aims to:
 ## Guiding Principles
 
 - AI augments people; it does not replace human judgment.
-- Human review is required before organizational data is published or modified.
+- Human review is required before official organizational records are created or modified.
 - Information should be captured where the work occurs, not reconstructed later.
-- Business capabilities should be implemented as reusable, composable workflows.
+- Business capabilities should be implemented as reusable Business Services.
 - Business logic remains independent of user interfaces and third-party integrations.
 - Documentation evolves alongside implementation and serves as the authoritative source of truth.
 - Architecture should prioritize maintainability over short-term convenience.
@@ -50,11 +50,19 @@ The platform aims to:
 
 The platform currently focuses on enabling rescue staff and volunteers to capture, review, and manage organizational information through conversational experiences.
 
-Current capabilities include:
+Implemented and tested capabilities include:
 
-- Mobile Field Observation
-- Animal Record Updates
-- Organizational Knowledge Search
+- Capture Field Observation
+- Review Observation Report
+- Publish Observation Report
+
+Implemented capabilities include:
+
+- Knowledge Search
+
+Not implemented:
+
+- Update Animal
 
 Future capabilities include:
 

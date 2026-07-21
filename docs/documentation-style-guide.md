@@ -143,7 +143,7 @@ Describe reusable organizational capabilities.
 Examples include:
 
 - Capture Field Observation
-- Publish Observation
+- Publish Observation Report
 - Update Animal
 - Knowledge Search
 
@@ -168,7 +168,6 @@ Examples include:
 - Document Service
 - Notification Service
 - Configuration Service
-- Storage Service
 
 Platform Services implement technical capabilities rather than business rules.
 

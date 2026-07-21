@@ -2,22 +2,22 @@
 
 ## Purpose
 
-Describe the organizational responsibility for reviewing Observation Reports before they become official organizational records.
+Describe the reporter's responsibility for reviewing and confirming a proposed Observation Report during the Capture Field Observation interaction.
 
-Reviewers determine whether an Observation Report should:
+The reporter determines whether the proposed Observation Report:
 
-- Be approved
-- Be rejected
-- Be held for future action when that capability becomes available
+- Accurately represents the information provided
+- Requires correction before publication
+- Is ready to be confirmed for publication as organizational working information
 
-This capability begins after an Observation Report has been submitted through Capture Field Observation and ends when the Observation Report reaches an organizational disposition.
+This capability begins after Capture Field Observation structures the proposed Observation Report and ends when the reporter confirms it or requests corrections.
 
 ---
 
 ## Audience
 
+- Volunteers
 - Staff
-- Administrators
 - Architects
 - Developers
 
@@ -25,53 +25,51 @@ This capability begins after an Observation Report has been submitted through Ca
 
 # Business Goal
 
-Ensure the quality of captured information, protect the integrity of organizational records, prevent incorrect information from entering systems of record, and maintain human oversight of publication decisions.
+Ensure the proposed Observation Report accurately represents the reporter's information, correct errors before publication, and preserve human confirmation within the implemented Observation interaction.
 
 ---
 
 # Actors
 
-## Staff Reviewer
+## Reporter
 
-Evaluates an Observation Report and its supporting evidence and determines its organizational disposition.
+Reviews the proposed Observation Report and its supporting evidence and either confirms the information or requests corrections.
 
-Future reviewer roles may participate as organizational review responsibilities evolve.
+The reporter may be a volunteer or staff member.
 
 ---
 
 # Preconditions
 
 - An Observation Report exists.
-- The Observation Report has been submitted for review.
+- The proposed Observation Report has been structured through Capture Field Observation.
 - Supporting documents are available when they are associated with the Observation Report.
-- The Observation Report has not already reached a final disposition.
+- The reporter has not yet confirmed the proposed Observation Report.
 
 ---
 
 # Trigger
 
-This capability begins when an Observation Report becomes available for organizational review.
+This capability begins when a proposed Observation Report becomes available to the reporter for review.
 
 ---
 
 # Business Flow
 
-1. The reviewer opens the Observation Report.
-2. The reviewer evaluates the observation and supporting evidence.
-3. The reviewer determines an outcome.
-4. The Observation Report is approved, rejected, or deferred for future action.
-5. Approved Observation Reports may be published according to organizational policy.
-
-Deferral is a future capability and does not establish a current review process.
+1. The reporter reviews the proposed Observation Report.
+2. The reporter evaluates the captured information and supporting documents.
+3. The reporter requests corrections when information is inaccurate or incomplete, when required.
+4. The reporter confirms the proposed Observation Report when it accurately represents the information provided.
+5. The confirmed Observation Report may proceed to Publish Observation Report.
 
 ---
 
 # Business Rules
 
-- Human review is mandatory before publication.
-- Review decisions are auditable.
-- Approval precedes publication.
-- Rejected Observation Reports are not published.
+- Reporter review and confirmation are mandatory before Observation publication.
+- Reporter confirmation is auditable.
+- Confirmation precedes publication as organizational working information.
+- Reporter confirmation does not approve an Intake or an official animal record.
 - Supporting documents remain associated with the Observation Report.
 
 ---
@@ -86,7 +84,7 @@ Deferral is a future capability and does not establish a current review process.
 
 - Animal Observation
 - Supporting Documents
-- Review Decision
+- Reporter Confirmation
 
 ---
 
@@ -96,24 +94,27 @@ The following Business Service participates directly in this capability:
 
 - Review Observation Report
 
-Capture Field Observation is the upstream capability that produces and submits the Observation Report.
+Capture Field Observation is the upstream capability that structures the proposed Observation Report.
 
 ---
 
 # Platform Services
 
-The following Platform Services support this capability:
+The following established Platform Service supports this capability:
+
+- Configuration Service
+
+The following Platform Service is architecturally accepted but not implemented:
 
 - Document Service
-- Configuration Service
 
 ---
 
 # Integration Services
 
-No Integration Services are required to determine the review disposition.
+No Integration Services are required for reporter review and confirmation.
 
-Following approval, publication to external systems may occur through a separate capability according to organizational policy.
+Following confirmation, Publish Observation Report makes the Observation Report available as organizational working information.
 
 ---
 
@@ -121,21 +122,22 @@ Following approval, publication to external systems may occur through a separate
 
 This capability may be performed through user experiences including:
 
-- Administrative review interface
-- Future mobile review interface
+- Conversational experience
+- Administrative interface
+- Future mobile experience
 
-User Experiences support review activities but do not implement the business rules governing disposition or publication.
+User Experiences support reporter review and confirmation but do not implement the governing business rules.
 
 ---
 
 # Validation
 
-The reviewer validates that:
+The reporter validates that:
 
 - Required observation information is present.
-- The Observation Report and its Animal Observations are sufficiently complete for a review decision.
+- The Observation Report and its Animal Observations accurately represent the information provided.
 - Supporting documents are available and associated with the correct Observation Report.
-- The captured information is suitable for the selected disposition.
+- The captured information is ready for confirmation or requires correction.
 
 ---
 
@@ -145,23 +147,23 @@ Business-level error conditions include:
 
 - The Observation Report is unavailable.
 - Required information is missing.
-- Supporting evidence required for the review is unavailable.
-- The review cannot be completed.
+- Supporting documents associated with the Observation Report are unavailable.
+- Reporter confirmation cannot be completed.
 
 ---
 
 # Human Review Requirements
 
-This capability embodies the mandatory human review established by the platform architecture.
+This capability embodies reporter review and confirmation within the implemented Observation interaction.
 
-An Observation Report cannot proceed to publication until an authorized reviewer approves it.
+It does not replace the later human organizational review required before a published Observation Report may proceed toward Intake or an official organizational record.
 
 ---
 
 # Security Considerations
 
-- Review decisions should be limited to authorized reviewers.
-- Reviewer actions and dispositions should remain auditable.
+- Access should be limited to the reporter and other authorized users.
+- Reporter actions and confirmation should remain auditable.
 - Observation Reports and supporting documents should be protected throughout review.
 
 ---
@@ -170,10 +172,10 @@ An Observation Report cannot proceed to publication until an authorized reviewer
 
 The organization should be able to determine:
 
-- The review history of an Observation Report.
-- Actions performed by reviewers.
-- The current disposition.
-- Timestamps associated with review actions and decisions.
+- The reporter review history of an Observation Report.
+- Corrections requested by the reporter.
+- The current confirmation status.
+- Timestamps associated with reporter actions and confirmation.
 
 ---
 
@@ -181,11 +183,7 @@ The organization should be able to determine:
 
 Future considerations may include:
 
-- Reviewer assignment
-- Collaborative review
-- Escalation workflows
 - Clarification requests
-- Holding an Observation Report for future action
 
 These items represent possible evolution and do not establish new architectural decisions.
 

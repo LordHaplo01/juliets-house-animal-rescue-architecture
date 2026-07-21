@@ -112,7 +112,7 @@ Examples
 Business Services
 
 - Capture Field Observation
-- Publish Observation
+- Publish Observation Report
 - Update Animal
 - Knowledge Search
 
@@ -178,7 +178,7 @@ Examples
 - AI → Business Service
 - Business Service → Platform Service
 - Business Service → Integration Service
-- Integration Service → Pawlytics
+- Integration Service → External System
 
 ---
 
@@ -202,17 +202,19 @@ Deployment diagrams should remain independent of business workflows.
 
 Diagram files should follow:
 
-NN-descriptive-name.mmd
+NN-descriptive-name.md
 
 Examples
 
-01-system-context.mmd
+02-observation-capability-map.md
 
-02-container-platform.mmd
+03-observation-workflow.md
 
-03-component-business-services.mmd
+04-observation-state-diagram.md
 
-04-workflow-create-intake.mmd
+05-observation-sequence.md
+
+README.md is the sole authoritative location for the C4 System Context diagram. Do not create a standalone duplicate.
 
 ---
 

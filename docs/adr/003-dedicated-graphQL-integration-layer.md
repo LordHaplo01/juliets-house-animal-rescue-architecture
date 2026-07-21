@@ -14,9 +14,8 @@ Accepted
 
 Multiple Business Services require access to Pawlytics.
 
-Current and future platform capabilities include:
+Future platform capabilities requiring official animal record access include:
 
-- Publish Observation
 - Update Animal
 - Official Animal Intake
 - Adoption workflows
@@ -52,6 +51,8 @@ The GraphQL Integration Layer is responsible for:
 - Future API compatibility
 
 Business Services remain independent of Pawlytics implementation details.
+
+Publish Observation Report does not use this Integration Layer to create official animal records. It publishes organizational working information for a later human review and Intake process.
 
 ---
 
