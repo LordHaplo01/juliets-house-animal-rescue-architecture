@@ -85,7 +85,7 @@ Publishing occurs only after human approval.
 
 ## Volunteer Platform
 
-The collection of user experiences, business services, workflows, and integrations that support Juliet's House Animal Rescue operations.
+The collection of user experiences, Business Services, Platform Services, workflows, and Integration Services that support Juliet's House Animal Rescue operations.
 
 Conversational AI is one experience within the platform rather than the platform itself.
 
@@ -115,9 +115,41 @@ Business Services are independent of user interfaces.
 
 ---
 
+## Platform Service
+
+A reusable technical capability that supports one or more Business Services.
+
+Platform Services encapsulate shared technical functionality that is independent of any single business capability.
+
+Examples include:
+
+- Document Service
+- Configuration Service
+- ID Generation Service
+- Notification Service
+
+Platform Services do not implement business rules.
+
+---
+
+## Document Service
+
+A Platform Service responsible for managing supporting documents associated with business artifacts.
+
+Responsibilities include:
+
+- Document validation
+- Storage abstraction
+- Metadata management
+- Returning storage references
+
+Business Services determine when documents are required. The Document Service manages their technical lifecycle.
+
+---
+
 ## Workflow
 
-An implementation of a Business Service.
+An implementation of a Business Service that may orchestrate one or more Platform Services and Integration Services.
 
 The current implementation uses n8n workflows, although the architectural concept is independent of any specific workflow platform.
 
@@ -129,17 +161,16 @@ A Business Service exposed to the AI Assistant for invocation during a conversat
 
 ---
 
-## Backend Services
+## Platform Services
 
-Internal services implementing business logic, orchestration, and integrations.
+Reusable technical capabilities shared across Business Services.
 
 Examples include:
 
-- Workflow Engine
-- GraphQL Service
-- Authentication
-- Validation
-- Notification Services
+- Document Service
+- Configuration Service
+- ID Generation Service
+- Notification Service
 
 ---
 
@@ -214,6 +245,6 @@ Used throughout this repository to communicate the platform architecture.
 
 ## Layered Architecture
 
-An architectural style that separates user experiences, orchestration, business services, integrations, and external systems into well-defined layers with clearly defined responsibilities.
+An architectural style that separates user experiences, orchestration, Business Services, Platform Services, Integration Services, and external systems into six well-defined layers with clearly defined responsibilities.
 
 Business capabilities communicate through these layers while remaining loosely coupled and independently maintainable.
